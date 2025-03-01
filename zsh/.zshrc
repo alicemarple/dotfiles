@@ -1,29 +1,46 @@
-# set the directory we want to store zinit and plugins
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+# Define Plugin Directory
+ZSH_CONFIG_DIR="$HOME/.config/zsh"
 
-# Download zinit, if it's not there yet
-if [ ! -d "$ZINIT_HOME" ]; then
-  mkdir -p "$(dirname $ZINIT_HOME)"
-  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+# Ensure ~/.config/zsh exists
+if [[ ! -d "$ZSH_CONFIG_DIR" ]]; then
+    echo "Creating $ZSH_CONFIG_DIR..."
+    mkdir -p "$ZSH_CONFIG_DIR"
 fi
 
-# source zinit
-source "${ZINIT_HOME}/zinit.zsh"
+# Ensure plugins are installed
+for plugin in "zsh-autosuggestions" "zsh-syntax-highlighting" "zsh-completions"; do
+    if [[ ! -d "$ZSH_CONFIG_DIR/$plugin" ]]; then
+        echo "Installing $plugin..."
+        git clone --depth=1 https://github.com/zsh-users/$plugin.git $ZSH_CONFIG_DIR/$plugin
+    fi
+done
 
-# plugins
+# Load Plugins
+source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fpath+=(~/.config/zsh/zsh-completions)
+autoload -Uz compinit && compinit -C
 
-# syntax-highlighting
-zinit light zsh-users/zsh-syntax-highlighting
+# vi mode setup 
+bindkey -v 
+export KEYTIMEOUT=1
 
-# completions
-zinit light zsh-users/zsh-completions
-# load completions
-autoload -U compinit && compinit
+# Change Cursor Shape in Different Modes
+function zle-keymap-select {
+  case $KEYMAP in
+    vicmd)  echo -ne '\e[1 q' ;; # Block cursor in normal mode
+    viins|main) echo -ne '\e[1 q' ;; # Beam cursor in insert mode
+  esac
+}
 
-# auto suggestions
-zinit light zsh-users/zsh-autosuggestions
-bindkey '^F' autosuggest-accept
+# Restore Cursor on Zsh Exit
+function zle-line-finish {
+  echo -ne '\e[1 q'  # Set cursor back to beam when shell exits
+}
 
+# Attach to Zsh Line Editor (ZLE)
+zle -N zle-keymap-select
+zle -N zle-line-finish
 
 #History
 HISTSIZE=5000
@@ -39,30 +56,22 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups 
 
 #aliases
-alias dfzf='fzf --preview "bat --style=numbers --color=always {}" --bind "enter:execute(nvim {})+abort"'
+# alias dfzf='fzf -m --preview "bat --style=numbers --color=always {}" --bind "enter:execute(nvim {})+abort"'
+alias dfzf='nvim -p $(fzf --preview "bat --color=always --style=numbers --line-range=:100 {}" --multi)'
 
 # starship 
 # eval "$(starship init zsh)"
 # to fix the FUNCNEST limit error
 type starship_zle-keymap-select >/dev/null || \
   {
-    echo "Load starship"
+    current_time=$(date "+%Y-%m-%d %H:%M:%S")
+    echo "Load starship at $current_time"
     eval "$(/usr/local/bin/starship init zsh)"
   }
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
-# vi mode setup 
-bindkey -v 
-
 # source fzf
 source <(fzf --zsh)
-# fzf theme 
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
---color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
---color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
---color=selected-bg:#45475a \
---multi"
 
 # bat theme
 export BAT_THEME="Catppuccin Mocha"
@@ -87,3 +96,8 @@ alias et="eza --long --tree --level=3 --icons=always"
 
 # golang file path also golangci-lint path
 export PATH=$PATH:/usr/local/go/bin
+
+# keybinds 
+bindkey '^P' history-search-backward
+bindkey '^N' history-search-forward
+bindkey '^F' autosuggest-accept

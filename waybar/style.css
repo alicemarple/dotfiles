@@ -8,7 +8,8 @@
 window#waybar {
   /* background: rgba(26, 27, 38, 0.8); */
   /* background: rgba(49, 50, 68, 0.85); */
-  background: rgba(24, 24, 37, 0.75);
+  /* background: rgba(24, 24, 37, 0.75); */
+  background: rgba(30, 29, 47, 0.85);
   color: #c0caf5;
   font-family: "MesloLGM Nerd Font";
   transition: background-color 0.5s;

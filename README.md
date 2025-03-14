@@ -36,7 +36,7 @@ Here is the list of tools I use :
   <img src ="https://avatars.githubusercontent.com/u/110894199?v=4" alt = "profile image" style = "width:60px; height:60px; border-radius: 50%; "/>
 </div>
 
-[@alice](https://www.github.com/alice46878)
+[@alice](https://www.github.com/alicemarple)
 
 ### Related :
 

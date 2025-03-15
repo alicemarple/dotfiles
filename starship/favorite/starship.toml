@@ -20,7 +20,7 @@ truncation_length = 2
 truncation_symbol = '…/'
 
 [character]
-success_symbol = "[❯](lavender)"
+success_symbol = "[❯](maroon)"
 error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
 

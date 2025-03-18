@@ -9,7 +9,7 @@ vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
 vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
 vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
-vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>", { desc = "clear search highlight" })
+vim.keymap.set("n", "<leader>ch", ":nohlsearch<CR>", { desc = "clear search highlight" })
 vim.keymap.set("i", "jk", "<ESC>", { desc = "exit the insert mode with jk" })
 
 -- Window management
@@ -36,11 +36,6 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste over without lose" })
 -- Movement in page
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move page in downward" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move page in upward" })
-
--- Exiting and Saving files
-vim.keymap.set("n", "<Leader>se", ":wqa<CR>", { desc = "Save and exit" })
-vim.keymap.set("n", "<Leader>sb", ":wa<CR>", { desc = "Save bufers" })
-vim.keymap.set("n", "<Leader>ef", ":q!<CR>", { desc = "Exit without save" })
 
 -- Select Whole file
 vim.keymap.set("n", "<leader>sa", "gg<S-v>G", { desc = "Select whole file" })

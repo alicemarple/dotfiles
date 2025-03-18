@@ -64,8 +64,7 @@ alias dfzf='nvim -p $(fzf --preview "bat --color=always --style=numbers --line-r
 # to fix the FUNCNEST limit error
 type starship_zle-keymap-select >/dev/null || \
   {
-    current_time=$(date "+%Y-%m-%d %H:%M:%S")
-    echo "Load starship at $current_time"
+    echo "Load starship"
     eval "$(/usr/local/bin/starship init zsh)"
   }
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"

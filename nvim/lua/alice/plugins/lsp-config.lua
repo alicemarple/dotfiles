@@ -39,6 +39,7 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			{ "antosha417/nvim-lsp-file-operations", config = true },
@@ -97,8 +98,8 @@ return {
 			vim.keymap.set("n", "<leader>fd", vim.lsp.buf.format, { desc = "Format document" })
 			vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
-			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
-			vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic list" })
+			vim.keymap.set("n", "<leader>le", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
+			vim.keymap.set("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "Open diagnostic list" })
 			vim.keymap.set("n", "<leader>td", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
 		end,
 	},

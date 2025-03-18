@@ -1,3 +1,6 @@
+
+" ################### alpha ( V 1.2 )  ################### 
+
 set number
 set relativenumber
 set laststatus=2
@@ -9,14 +12,20 @@ set mouse=a
 set hlsearch
 set clipboard=unnamedplus
 
+
+" ################### List your plugins here ################### 
+
 call plug#begin()
 
-" List your plugins here
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 Plug 'tribela/vim-transparent'
 Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
+Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 
@@ -31,6 +40,10 @@ let g:lightline = {
       \   'gitbranch': 'gitbranch#name'
       \ },
       \ }
+
+filetype plugin indent on
+
+" Colorscheme
 colorscheme catppuccin_mocha
 
 " Set space as leader key
@@ -40,7 +53,7 @@ let mapleader=" "
 inoremap jk <Esc>
 
 " Deselect the search highlight
-nnoremap <Leader>h :nohlsearch<CR>
+nnoremap <Leader>hc :nohlsearch<CR>
 
 " Move down while cursor is in middle of page
 nnoremap <C-d> <C-d>zz
@@ -60,3 +73,23 @@ nnoremap <Leader>ef :q!<CR>
 " For selecting whole file
 nnoremap <Leader>sa ggVG
 
+" Search Files
+nnoremap <Leader>ff :Files<CR>
+
+" Search keyword in files
+nnoremap <Leader>ef :Rg<CR>
+
+
+" ################### NerdTree ###################
+
+" Open current File in NerdTree
+nnoremap <leader>ee :NERDTreeFocus<CR>
+
+" Open NerdTree 
+nnoremap <Leader>n :NERDTree<CR>
+
+" Toggle NerdTree
+nnoremap <Leader>nt :NERDTreeToggle<CR>
+
+" Find in NerdTree 
+nnoremap <Leader>nf :NERDTreeFind<CR>

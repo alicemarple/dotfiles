@@ -1,49 +1,57 @@
+# Timeout for commands executed by starship (in milliseconds).
+command_timeout = 3600
+
+# Timeout for starship to scan files (in milliseconds).
+scan_timeout = 500
+
+# Format
 format = """
+$username\
+$hostname\
 $directory\
 $git_branch\
 $git_state\
 $git_status\
 $cmd_duration\
+$line_break\
 $character"""
 
 palette = "catppuccin_mocha"
 
 [directory]
-format = "[$path]($style)"
-style = "bold lavender"
+format = "[$path]($style) "
+style = "bold blue"
 home_symbol = "~  "
-truncation_length = 1
+truncation_length = 2
+truncation_symbol = '…/'
 
 [character]
-success_symbol = "[ ](bold lavender)"
-error_symbol = "[ ✗](red)"
-vimcmd_symbol = "[ ❮](green)"
+success_symbol = "[❯](maroon)"
+error_symbol = "[✗](red)"
+vimcmd_symbol = "[❮](green)"
 
 [git_branch]
-format = " on[  $branch]($style)"
-style = "bold blue"
+format = "[$branch]($style) "
+style = "surface2"
 
 [git_status]
 format = "[[($conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "surface2"
+style = "blue"
 conflicted = ""
-untracked = ""
-modified = ""
-staged = ""
+untracked = "?"
+modified = "!"
+staged = "*"
 renamed = ""
 deleted = ""
 stashed = "≡"
 
 [git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
+format = ' \([$state( $progress_current/$progress_total)]($style)\)'
 style = "surface2"
 
 [cmd_duration]
-format = "[  $duration]($style) "
-style = "surface2"
-
-[jobs]
-format = "[  ](red) "
+format = "[$duration]($style)"
+style = "rosewater"
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"

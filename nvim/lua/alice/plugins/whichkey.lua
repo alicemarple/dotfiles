@@ -13,9 +13,8 @@ return {
 		wk.add({
 			{ "<leader>f", group = "Files" },
 			{ "<leader>b", group = "Buffer" },
-			{ "<leader>n", group = "Neotree" },
+			{ "<leader>e", group = "Neotree" },
 			{ "<leader>g", group = "Git" },
-			{ "<leader>x", group = "Diagnostics" },
 			{ "<leader>T", group = "Test" },
 		})
 	end,

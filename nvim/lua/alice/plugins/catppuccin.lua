@@ -10,6 +10,8 @@ return {
 				transparent_background = true,
 				integrations = {
 					which_key = true,
+					noice = true,
+					notify = true,
 				},
 			})
 			vim.cmd.colorscheme("catppuccin-mocha")

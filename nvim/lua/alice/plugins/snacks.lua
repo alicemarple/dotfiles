@@ -14,6 +14,7 @@ return {
 			enabled = true,
 			timeout = 3000,
 		},
+		terminal = { enabled = true },
 		quickfile = { enabled = true },
 		scope = { enabled = true },
 		gitbrowse = { enabled = true },
@@ -24,9 +25,32 @@ return {
 			notification = {
 				wo = { wrap = true },
 			},
+			terminal = {
+				position = "float",
+				backdrop = 60,
+				height = 0.9,
+				width = 0.9,
+				zindex = 40,
+				border = "rounded",
+				title_pos = "center",
+			},
 		},
 	},
 	keys = {
+		{
+			"<c-/>",
+			function()
+				Snacks.terminal()
+			end,
+			desc = "Toggle Terminal",
+		},
+		{
+			"<c-_>",
+			function()
+				Snacks.terminal()
+			end,
+			desc = "which_key_ignore",
+		},
 		{
 			"<leader>sk",
 			function()
@@ -41,6 +65,20 @@ return {
 				Snacks.picker.grep()
 			end,
 			desc = "Grep",
+		},
+		{
+			"<leader>fc",
+			function()
+				Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+			end,
+			desc = "Find Config File",
+		},
+		{
+			"<leader>fg",
+			function()
+				Snacks.picker.git_files()
+			end,
+			desc = "Find Git Files",
 		},
 		{
 			"<leader>ff",

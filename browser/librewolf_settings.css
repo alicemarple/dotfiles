@@ -1,0 +1,18 @@
+/* for the no border browser address */
+#urlbar,
+#urlbar-background,
+#urlbar-input-container,
+#urlbar-container,
+#urlbar[focused="true"],
+#urlbar[open],
+#urlbar[focused="true"][open],
+#urlbar[focused="true"]:not([open]),
+#urlbar[focused],
+#urlbar[focused][open] {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+#urlbar[focused="true"] > #urlbar-background {
+  box-shadow: none !important;
+}

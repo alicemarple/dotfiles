@@ -12,6 +12,8 @@ return {
 					which_key = true,
 					noice = true,
 					notify = true,
+					alpha = true,
+					snacks = true,
 				},
 			})
 			vim.cmd.colorscheme("catppuccin-mocha")

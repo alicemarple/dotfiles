@@ -1,5 +1,5 @@
 # Timeout for commands executed by starship (in milliseconds).
-command_timeout = 3600
+command_timeout = 36000
 
 # Timeout for starship to scan files (in milliseconds).
 scan_timeout = 500
@@ -21,7 +21,7 @@ palette = "catppuccin_mocha"
 [directory]
 format = "[$path]($style) "
 style = "bold blue"
-home_symbol = "~  "
+# home_symbol = "~  "
 truncation_length = 2
 truncation_symbol = '…/'
 

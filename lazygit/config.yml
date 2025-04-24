@@ -1,3 +1,6 @@
+git:
+  log:
+    showWholeGraph: true
 theme:
   activeBorderColor:
     - "#b4befe"

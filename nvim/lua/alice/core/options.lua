@@ -30,3 +30,4 @@ vim.opt.swapfile = false
 vim.opt.termguicolors = true
 
 vim.wo.number = true
+vim.opt.showmode = false

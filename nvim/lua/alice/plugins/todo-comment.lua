@@ -20,14 +20,23 @@ return {
 		vim.keymap.set("n", "[t", function()
 			todo_comments.jump_prev()
 		end, { desc = "Previous todo comment" })
+		vim.keymap.set("n", "<leader>sT", function()
+			require("snacks").picker.todo_comments()
+		end, { desc = "Todos List" })
+		vim.keymap.set("n", "<leader>st", function()
+			require("snacks").picker.todo_comments({
+				keywords = { "TODO", "BUG", "HACK", "NOTE", "WARN", "FIX" },
+			})
+		end, { desc = "Todos List" })
 
 		todo_comments.setup({
+
 			keywords = {
 				TODO = { color = "#b4befe" },
 				HACK = { color = "#f9e2af" },
 				BUG = { color = "#f38ba8", alt = { "FIX" } },
 				NOTE = { color = "#a6e3a1" },
-				WARN = { color = "#fab387", alt = { "WARNING" } },
+				WARN = { color = "#fab387", alt = {} },
 			},
 		})
 	end,

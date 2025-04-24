@@ -1,10 +1,6 @@
 return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
-	dependencies = {
-		"MunifTanjim/nui.nvim",
-		"rcarriga/nvim-notify",
-	},
 	config = function()
 		require("noice").setup({
 			cmdline = {
@@ -21,9 +17,6 @@ return {
 			},
 			messages = {
 				view_search = false, -- disable default search messages
-			},
-			notify = {
-				enabled = true,
 			},
 			lsp = {
 				progress = {
@@ -79,14 +72,5 @@ return {
 				},
 			},
 		})
-
-		-- Setup notify with minimal style
-		require("notify").setup({
-			stages = "fade_in_slide_out",
-			render = "minimal",
-			timeout = 2000,
-			background_colour = "#000000",
-		})
-		vim.notify = require("notify")
 	end,
 }

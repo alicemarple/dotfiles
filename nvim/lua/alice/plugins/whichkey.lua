@@ -11,9 +11,9 @@ return {
 		vim.o.timeoutlen = 500
 		local wk = require("which-key")
 		wk.add({
-			{ "<leader>f", group = "Files" },
-			{ "<leader>b", group = "Buffer" },
-			{ "<leader>e", group = "Neotree" },
+			{ "<leader>ff", group = "Find Files" },
+			{ "<leader>sg", group = "Live Grep" },
+			{ "<leader>ee", group = "Explorer" },
 			{ "<leader>g", group = "Git" },
 			{ "<leader>T", group = "Test" },
 		})

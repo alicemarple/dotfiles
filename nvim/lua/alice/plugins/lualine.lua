@@ -5,7 +5,8 @@ return {
 		require("lualine").setup({
 			options = {
 				theme = "catppuccin",
-				disabled_filetypes = { "alpha" },
+				globalstatus = true, -- enable lualine golbally if want to disable for anything add in below line
+				disabled_filetypes = { "alpha", "snacks_picker_input" },
 			},
 		})
 	end,

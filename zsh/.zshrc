@@ -57,7 +57,7 @@ setopt hist_find_no_dups
 
 #aliases
 # alias dfzf='fzf -m --preview "bat --style=numbers --color=always {}" --bind "enter:execute(nvim {})+abort"'
-alias dfzf='nvim -p $(fzf --preview "bat --color=always --style=numbers --line-range=:100 {}" --multi)'
+alias df='nvim -p $(fzf --preview "bat --color=always --style=numbers --line-range=:100 {}" --multi)'
 
 # starship 
 # eval "$(starship init zsh)"
@@ -71,6 +71,41 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
 # source fzf
 source <(fzf --zsh)
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+  --color=fg:#cdd6f4,fg+:#d0d0d0,bg:-1,bg+:#45475a
+  --color=hl:#f38ba8,hl+:#a6e3a1,info:#f5e0dc,marker:#eba0ac
+  --color=prompt:#f38ba8,spinner:#45475a,pointer:#f38ba8,header:#f2cdcd
+  --color=border:#313244,label:#cdd6f4,query:#d9d9d9
+  --preview-window="border-rounded" --prompt="> " --marker="┃" --pointer="▌"
+  --separator="─" --scrollbar="│"'
+
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}
+
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo \${}'"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+  esac
+}
 
 # bat theme
 export BAT_THEME="Catppuccin Mocha"
@@ -90,8 +125,10 @@ function y() {
 eval "$(zoxide init zsh)"
 
 # eza
-alias el="eza --all --long --icons=always"
-alias et="eza --long --tree --level=3 --icons=always"
+alias el="eza --all --long"
+# alias el="eza --all --long --icons=always"
+alias et="eza --long --tree --level=3"
+# alias et="eza --long --tree --level=3 --icons=always"
 
 # golang file path also golangci-lint path
 export PATH=$PATH:/usr/local/go/bin
@@ -100,3 +137,9 @@ export PATH=$PATH:/usr/local/go/bin
 bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 bindkey '^F' autosuggest-accept
+
+# syntax
+# ZSH_HIGHLIGHT_STYLES[default]='fg=#cdd6f4'   # Lavender color
+# ZSH_HIGHLIGHT_STYLES[command]='fg=#cdd6f4'   # Lavender for commands
+# ZSH_HIGHLIGHT_STYLES[builtin]='fg=#cdd6f4'   # Lavender for built-in commands
+# ZSH_HIGHLIGHT_STYLES[alias]='fg=#cdd6f4'     # Lavender for aliases

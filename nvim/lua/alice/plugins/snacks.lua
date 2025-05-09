@@ -1,12 +1,19 @@
 return {
 	"folke/snacks.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = {
+		"nvim-tree/nvim-web-devicons",
+		"MunifTanjim/nui.nvim",
+	},
 	priority = 1000,
 	lazy = false,
 	---@type snacks.Config
 	opts = {
 		explorer = { enabled = true },
-		picker = { enabled = true },
+		picker = {
+			layout = {
+				preset = "telescope",
+			},
+		},
 		indent = { enabled = true },
 		input = { enabled = true },
 		bigfile = { enabled = true },
@@ -14,6 +21,7 @@ return {
 			enabled = true,
 			timeout = 3000,
 		},
+		util = { enabled = true },
 		terminal = { enabled = true },
 		quickfile = { enabled = true },
 		scope = { enabled = true },

@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Define Plugin Directory
 ZSH_CONFIG_DIR="$HOME/.config/zsh"
 
@@ -64,7 +71,7 @@ alias df='nvim -p $(fzf --preview "bat --color=always --style=numbers --line-ran
 # to fix the FUNCNEST limit error
 type starship_zle-keymap-select >/dev/null || \
   {
-    echo "Load starship"
+    ~/.fetch/fetch -f ~/.fetch/waifu_ascii.txt -g 15 -c blue
     eval "$(/usr/local/bin/starship init zsh)"
   }
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
@@ -143,3 +150,4 @@ bindkey '^F' autosuggest-accept
 # ZSH_HIGHLIGHT_STYLES[command]='fg=#cdd6f4'   # Lavender for commands
 # ZSH_HIGHLIGHT_STYLES[builtin]='fg=#cdd6f4'   # Lavender for built-in commands
 # ZSH_HIGHLIGHT_STYLES[alias]='fg=#cdd6f4'     # Lavender for aliases
+

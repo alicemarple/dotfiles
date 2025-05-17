@@ -8,7 +8,7 @@
     bg0:#1E1D2FE1;
     bg1:#28283970;
     bg2:#4C566A70;
-    bg3:#B4BEFEE1;
+    bg3:##89B4FAE1;
     fg0:#D9E0EE;
     fg1:#7AA2F7;
     fg2:#D8DEE9;
@@ -76,7 +76,7 @@ element alternate active {
     text-color:@bg3;
 }
 element selected {
-    text-color:@bg1;
+    text-color:@fg0;
 }
 
 element selected normal, element selected active {

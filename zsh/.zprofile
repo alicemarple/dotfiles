@@ -1,4 +1,5 @@
 #!/bin/sh
+# Add in home directory ~/.zprofile
 # env vars to set on login, zsh settings in ~/config/zsh/.zshrc
 # read first
 

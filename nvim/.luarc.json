@@ -8,6 +8,7 @@
         "missing-fields",
         "undefined-global",
         "undefined-field",
-        "assign-type-mismatch"
+        "assign-type-mismatch",
+        "redefined-local"
     ]
 }

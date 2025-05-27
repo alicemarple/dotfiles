@@ -19,9 +19,7 @@ return {
 				end, -- can be a string | function, see "Mouse actions"
 				-- left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
 				-- middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
-				-- buffer_close_icon = '󰅖',
 				buffer_close_icon = "✗",
-				-- buffer_close_icon = '✕',
 				close_icon = "",
 				path_components = 1, -- Show only the file name without the directory
 				modified_icon = "●",
@@ -59,7 +57,7 @@ return {
 			},
 			highlights = {
 				separator = {
-					fg = "#434C5E",
+					fg = "#bac2de",
 				},
 				buffer_selected = {
 					bold = true,
@@ -83,6 +81,7 @@ return {
 		)
 		vim.keymap.set("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev Buffer" })
 		vim.keymap.set("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buffer" })
+		vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Buffer delete" })
 		vim.keymap.set("n", "<leader>br", "<Cmd>BufferLineCloseRight<CR>", { desc = "Delete Buffers to the Right" })
 		vim.keymap.set("n", "<leader>bl", "<Cmd>BufferLineCloseLeft<CR>", { desc = "Delete Buffers to the Left" })
 	end,

@@ -20,6 +20,7 @@
     // "battery#bat2",
     // "clock"
     "battery",
+    "custom/logout",
   ],
   //Modules configuration
   "include": ["~/.config/waybar/modules.json"],

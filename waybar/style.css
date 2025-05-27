@@ -99,6 +99,12 @@ window#waybar {
   font-size: 17px;
   transition: color 0.5s;
 }
+#custom-logout {
+  margin-left: 2px;
+  padding: 0 2px;
+  font-size: 17px;
+  transition: color 0.5s;
+}
 /* #custom-arch:hover { */
 /*   color: #1793d1; */
 /* } */

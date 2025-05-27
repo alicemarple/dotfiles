@@ -1,0 +1,10 @@
+# eza
+alias el="eza --all --long"
+alias et="eza --long --tree --level=3"
+
+# trash-cli
+alias ts="trash"
+alias ts-l="trash-list"
+alias ts-r="trash-restore"
+alias ts-rm="trash-rm"
+alias ts-e="trash-empty"

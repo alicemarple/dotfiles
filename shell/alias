@@ -1,6 +1,9 @@
+# fzf
+alias df="fzf --preview 'bat --color=always --style=numbers --line-range=:100 {}' --multi | xargs -r nvim -p"
+
 # eza
-alias el="eza --all --long"
-alias et="eza --long --tree --level=3"
+alias el="eza -la --icons"
+alias et="eza -aT --level=3 --icons"
 
 # trash-cli
 alias ts="trash"

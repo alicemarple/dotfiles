@@ -28,9 +28,6 @@ export PYTHON_HISTORY="$XDG_DATA_HOME/python/history"
 export PATH="$XDG_CONFIG_HOME/scripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
-# golang file path also golangci-lint path
-export PATH=$PATH:/usr/local/go/bin
-
 
 # moving other files and some other vars
 export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
@@ -67,13 +64,3 @@ export KEYTIMEOUT=1
 # starship
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 export STARSHIP_VI_MODE=true
-
-# colored less + termcap vars
-export LESS="R --use-color -Dd+r -Du+b"
-export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
-export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
-export LESS_TERMCAP_me="$(printf '%b' '[0m')"
-export LESS_TERMCAP_so="$(printf '%b' '[01;44;33m')"
-export LESS_TERMCAP_se="$(printf '%b' '[0m')"
-export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
-export LESS_TERMCAP_ue="$(printf '%b' '[0m')"

@@ -1,5 +1,5 @@
 # fzf
-alias dff="fzf --preview 'bat --color=always --style=numbers --line-range=:100 {}' --multi | xargs -r nvim -p"
+alias fn="fzf --preview 'bat --color=always --style=numbers --line-range=:100 {}' --multi | xargs -r nvim -p"
 
 # eza
 alias el="eza -la --icons"

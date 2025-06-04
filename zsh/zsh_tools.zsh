@@ -1,12 +1,7 @@
 # fzf
 source <(fzf --zsh)
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-  --color=fg:#cdd6f4,fg+:#d0d0d0,bg:-1,bg+:#45475a
-  --color=hl:#f38ba8,hl+:#a6e3a1,info:#f5e0dc,marker:#eba0ac
-  --color=prompt:#f38ba8,spinner:#45475a,pointer:#f38ba8,header:#f2cdcd
-  --color=border:#313244,label:#cdd6f4,query:#d9d9d9
-  --preview-window="border-rounded" --prompt="> " --marker="┃" --pointer="▌"
-  --separator="─" --scrollbar="│"'
+  --color=fg:#cdd6f4,fg+:#d0d0d0,bg:-1,bg+:#45475a'
 
 _fzf_compgen_path() {
   fd --hidden --exclude .git . "$1"

@@ -9,7 +9,7 @@ vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
 vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
 vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
-vim.keymap.set("n", "<leader>nh", ":nohlsearch<CR>", { desc = "clear search highlight" })
+vim.keymap.set("n", "<leader>nh", ":nohlsearch<CR>", { desc = "clear search highlight", silent = true })
 vim.keymap.set("i", "jk", "<ESC>", { desc = "exit the insert mode with jk" })
 
 -- Window management
@@ -40,5 +40,5 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move page in upward" })
 -- Select Whole file
 vim.keymap.set("n", "<leader>sa", "gg<S-v>G", { desc = "Select whole file" })
 
--- terminal 
+-- terminal
 vim.keymap.set("t", "jk", [[<C-\><C-n>]], { noremap = true, silent = true, desc = "Escape terminal insert mode" })

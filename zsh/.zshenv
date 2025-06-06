@@ -1,8 +1,4 @@
-#!/bin/sh
-# Add in home directory ~/.zprofile
-# env vars to set on login, zsh settings in ~/config/zsh/.zshrc
-# read first
-
+# Only write export statement
 # default programs
 export EDITOR="nvim"
 # export TERM="st"
@@ -19,6 +15,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 # bootstrap .zshrc to ~/.config/zsh/.zshrc, any other zsh config files can also reside here
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+# [[ -f "$XDG_CONFIG_HOME/zsh/main.zsh" ]] && source "$XDG_CONFIG_HOME/zsh/main.zsh"
 
 # history files
 export LESSHISTFILE="$XDG_CACHE_HOME/less_history"
@@ -64,3 +61,4 @@ export KEYTIMEOUT=1
 # starship
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 export STARSHIP_VI_MODE=true
+

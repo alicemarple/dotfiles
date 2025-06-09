@@ -1,7 +1,7 @@
 # fzf
 source <(fzf --zsh)
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-  --color=fg:#cdd6f4,fg+:#d0d0d0,bg:-1,bg+:#45475a'
+--color=fg:#cdd6f4,fg+:#d0d0d0,bg:-1,bg+:#45475a,pointer:#ff757f'
 
 _fzf_compgen_path() {
   fd --hidden --exclude .git . "$1"
@@ -25,12 +25,12 @@ _fzf_comprun() {
 
 # yazi
 function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
 }
 
 

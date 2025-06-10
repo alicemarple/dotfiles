@@ -15,6 +15,7 @@ Here is the list of tools I use :
 | Editor | Neovim |
 | Shell Prompt | Starship |
 | Multiplexer | Tmux |
+| Finder | fzf |
 | File Manager | Yazi |
 | Git | Lazygit |
 | Monitoring | Btop |
@@ -24,10 +25,12 @@ Here is the list of tools I use :
 
 ## 🎦 Screenshots
 
-![neovim and btop Screenshot](pictures/nvim_btop.png)
-![lazygit, eza and yazi Screenshot](pictures/lazygit_eza_yazi.png)
-![kitty and tmux Screenshot](pictures/kitty_tmux.png)
-![waybar and wofi Screenshot](pictures/waybar_wofi.png)
+![neovim and btop Screenshot](https://res.cloudinary.com/dljmvvlte/image/upload/q_auto,f_auto,w_1900/v1749569544/nvim_btop_rxdlks.png)
+![waybay and rofi](https://res.cloudinary.com/dljmvvlte/image/upload/v1749568674/rofi_fqimct.png)
+![lazygit, eza and yazi Screenshot](https://res.cloudinary.com/dljmvvlte/image/upload/q_auto,f_auto,w_1900/v1749569539/lazygit_eza_yazi_dok5fg.png)
+![kitty and tmux Screenshot](https://res.cloudinary.com/dljmvvlte/image/upload/v1749571394/tmux_starship_szv6vy.png)
+![dust](https://res.cloudinary.com/dljmvvlte/image/upload/v1749568666/dunst_volume_of1b3q.png)
+![wlogout](https://res.cloudinary.com/dljmvvlte/image/upload/v1749569683/wlogout_d8f3y5.png)
 
 ## 🙀 Authors
 

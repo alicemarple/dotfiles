@@ -49,11 +49,11 @@ return {
 						-- other items
 					},
 				},
-				-- icon_pinned = "󰐃",
-				-- minimum_padding = 1,
-				-- maximum_padding = 5,
-				-- maximum_length = 15,
-				-- sort_by = "insert_at_end",
+				icon_pinned = "󰐃",
+				minimum_padding = 1,
+				maximum_padding = 5,
+				maximum_length = 15,
+				sort_by = "insert_at_end",
 			},
 			highlights = {
 				separator = {

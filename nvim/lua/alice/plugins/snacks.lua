@@ -45,35 +45,8 @@ return {
 		},
 	},
 	keys = {
-		{
-			"<c-/>",
-			function()
-				Snacks.terminal()
-			end,
-			desc = "Toggle Terminal",
-		},
-		{
-			"<c-_>",
-			function()
-				Snacks.terminal()
-			end,
-			desc = "which_key_ignore",
-		},
-		{
-			"<leader>sk",
-			function()
-				Snacks.picker.keymaps()
-			end,
-			desc = "Keymaps",
-		},
-		-- find
-		{
-			"<leader>sg",
-			function()
-				Snacks.picker.grep()
-			end,
-			desc = "Grep",
-		},
+
+		-- fuzzy
 		{
 			"<leader>fc",
 			function()
@@ -116,6 +89,22 @@ return {
 			end,
 			desc = "Recent",
 		},
+
+		-- search
+		{
+			"<leader>sk",
+			function()
+				Snacks.picker.keymaps()
+			end,
+			desc = "Keymaps",
+		},
+		{
+			"<leader>sg",
+			function()
+				Snacks.picker.grep()
+			end,
+			desc = "Grep",
+		},
 		{
 			'<leader>s"',
 			function()
@@ -137,21 +126,6 @@ return {
 			end,
 			desc = "Help Pages",
 		},
-
-		{
-			"<leader>un",
-			function()
-				Snacks.notifier.hide()
-			end,
-			desc = "Dismiss All Notifications",
-		},
-		{
-			"<leader>hn",
-			function()
-				Snacks.picker.notifications()
-			end,
-			desc = "Notification History",
-		},
 		{
 			"<leader>s/",
 			function()
@@ -159,13 +133,8 @@ return {
 			end,
 			desc = "Search History",
 		},
-		{
-			"<leader>:",
-			function()
-				Snacks.picker.command_history()
-			end,
-			desc = "Command History",
-		},
+
+		-- explorer
 		{
 			"<leader>ee",
 			function()
@@ -173,7 +142,8 @@ return {
 			end,
 			desc = "File Explorer",
 		},
-		-- git
+
+		-- lazygit
 		{
 			"<leader>gg",
 			function()
@@ -181,6 +151,8 @@ return {
 			end,
 			desc = "Lazygit",
 		},
+
+		-- git
 		{
 			"<leader>gb",
 			function()
@@ -236,6 +208,45 @@ return {
 				Snacks.git.blame_line()
 			end,
 			desc = "Git Blame",
+		},
+
+		-- miscellaneous
+		{
+			"<c-/>",
+			function()
+				Snacks.terminal()
+			end,
+			desc = "Toggle Terminal",
+		},
+		{
+			"<c-_>",
+			function()
+				Snacks.terminal()
+			end,
+			desc = "which_key_ignore",
+		},
+
+		{
+			"<leader>un",
+			function()
+				Snacks.notifier.hide()
+			end,
+			desc = "Dismiss All Notifications",
+		},
+		{
+			"<leader>nt",
+			function()
+				Snacks.picker.notifications()
+			end,
+			desc = "Notification History",
+		},
+
+		{
+			"<leader>:",
+			function()
+				Snacks.picker.command_history()
+			end,
+			desc = "Command History",
 		},
 	},
 }

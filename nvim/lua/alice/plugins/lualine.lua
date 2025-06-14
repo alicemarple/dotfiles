@@ -10,7 +10,7 @@ return {
 			},
 			sections = {
 				lualine_b = { "branch" },
-				lualine_c = { "filename", "diff", "diagnostics" },
+				lualine_c = { "filename", "diagnostics" },
 				lualine_y = {
 					{ "progress", separator = " ", padding = { left = 1, right = 1 } },
 				},

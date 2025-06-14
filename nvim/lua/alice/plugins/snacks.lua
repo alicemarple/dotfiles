@@ -8,8 +8,6 @@ return {
 	lazy = false,
 	---@type snacks.Config
 	opts = {
-		explorer = { enabled = true },
-		picker = { enabled = false },
 		indent = { enabled = true },
 		input = { enabled = true },
 		bigfile = { enabled = true },
@@ -41,15 +39,6 @@ return {
 		},
 	},
 	keys = {
-
-		-- explorer
-		{
-			"<leader>ee",
-			function()
-				Snacks.explorer()
-			end,
-			desc = "File Explorer",
-		},
 
 		-- lazygit
 		{

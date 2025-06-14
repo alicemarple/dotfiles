@@ -54,6 +54,14 @@ return {
 				maximum_padding = 5,
 				maximum_length = 15,
 				sort_by = "insert_at_end",
+				offsets = {
+					{
+						filetype = "NvimTree",
+						text = "nvim-tree",
+						highlight = "Directory",
+						text_align = "left",
+					},
+				},
 			},
 			highlights = {
 				separator = {

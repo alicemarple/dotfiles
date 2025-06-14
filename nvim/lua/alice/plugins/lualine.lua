@@ -6,11 +6,11 @@ return {
 			options = {
 				theme = "catppuccin",
 				globalstatus = true, -- enable lualine golbally if want to disable for anything add in below line
-				disabled_filetypes = { "alpha", "TelescopePrompt", "snacks_picker_input" },
+				disabled_filetypes = { "alpha", "TelescopePrompt", "snacks_input" },
 			},
 			sections = {
 				lualine_b = { "branch" },
-				lualine_c = { "filename", "diagnostics" },
+				lualine_c = { "filename", "diff", "diagnostics" },
 				lualine_y = {
 					{ "progress", separator = " ", padding = { left = 1, right = 1 } },
 				},

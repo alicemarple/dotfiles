@@ -5,6 +5,12 @@ alias fn="fzf --preview 'bat --color=always --style=numbers --line-range=:100 {}
 alias el="eza -la --icons"
 alias et="eza -aT --level=3 --icons"
 
+# lazygit
+alias gg="lazygit"
+
+# man
+alias fm="man -k . | fzf | awk '{print \$1}' | xargs -r man"
+
 # trash-cli
 alias ts="trash"
 alias ts-l="trash-list"

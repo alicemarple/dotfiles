@@ -11,10 +11,6 @@ return {
 		indent = { enabled = true },
 		input = { enabled = true },
 		bigfile = { enabled = true },
-		notifier = {
-			enabled = true,
-			timeout = 3000,
-		},
 		util = { enabled = true },
 		terminal = { enabled = true },
 		quickfile = { enabled = true },
@@ -24,9 +20,6 @@ return {
 		statuscolumn = { enabled = true },
 		words = { enabled = true },
 		styles = {
-			notification = {
-				wo = { wrap = true },
-			},
 			terminal = {
 				position = "float",
 				backdrop = 60,
@@ -86,14 +79,6 @@ return {
 				Snacks.terminal()
 			end,
 			desc = "which_key_ignore",
-		},
-
-		{
-			"<leader>un",
-			function()
-				Snacks.notifier.hide()
-			end,
-			desc = "Dismiss All Notifications",
 		},
 	},
 }

@@ -12,7 +12,7 @@ return {
 				lualine_b = { "branch" },
 				lualine_c = { "filename", "diagnostics" },
 				lualine_y = {
-					{ "progress", separator = " ", padding = { left = 1, right = 1 } },
+					{ "progress", padding = { left = 1, right = 1 } },
 				},
 				lualine_z = { "location" },
 			},

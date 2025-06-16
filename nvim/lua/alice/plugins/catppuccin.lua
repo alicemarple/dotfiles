@@ -9,7 +9,6 @@ return {
 			transparent_background = true,
 			integrations = {
 				which_key = true,
-				noice = true,
 				notify = true,
 				alpha = true,
 				snacks = true,

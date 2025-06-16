@@ -30,15 +30,15 @@ return {
 
 		telescope.load_extension("fzf")
 		telescope.load_extension("ui-select")
+		telescope.load_extension("notify")
 
 		-- set keymaps
-		local keymap = vim.keymap -- for conciseness
+		local keymap = vim.keymap
 
 		-- fuzzy
 		keymap.set("n", "<leader>fc", function()
 			require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
 		end, { desc = "Find Config File" })
-		keymap.set("n", "<leader>fg", "<cmd>Telescope git_files<CR>", { desc = "Find Git Files" })
 		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Find Files" })
 		keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Buffers" })
 		keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<CR>", { desc = "Recent Files" })
@@ -46,14 +46,15 @@ return {
 
 		-- search
 		keymap.set("n", "<leader>sk", "<cmd>Telescope keymaps<CR>", { desc = "Keymaps" })
-		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
+		keymap.set("n", "<leader>sc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 		keymap.set("n", "<leader>sg", "<cmd>Telescope live_grep<CR>", { desc = "Grep" })
-		keymap.set("n", '<leader>s"', "<cmd>Telescope registers<CR>", { desc = "Registers" })
-		keymap.set("n", "<leader>sM", "<cmd>Telescope man_pages<CR>", { desc = "Man Pages" })
 		keymap.set("n", "<leader>sh", "<cmd>Telescope help_tags<CR>", { desc = "Help Pages" })
 		keymap.set("n", "<leader>s/", "<cmd>Telescope search_history<CR>", { desc = "Search History" })
+		keymap.set("n", "<leader>s:", "<cmd>Telescope command_history<CR>", { desc = "Command History" }) -- command history
+		keymap.set("n", "<leader>sn", "<cmd>Telescope notify<CR>", { desc = "Notification History" }) -- notification history
 
 		-- git
+		keymap.set("n", "<leader>fg", "<cmd>Telescope git_files<CR>", { desc = "Find Git Files" })
 		keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<CR>", { desc = "Git Branches" })
 		keymap.set("n", "<leader>gL", "<cmd>Telescope git_bcommits<CR>", { desc = "Git Log Line" })
 		keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<CR>", { desc = "Git Status" })
@@ -61,7 +62,5 @@ return {
 
 		-- todos
 		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
-		-- command history
-		keymap.set("n", "<leader>:", "<cmd>Telescope command_history<CR>", { desc = "Command History" })
 	end,
 }

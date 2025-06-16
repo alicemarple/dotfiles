@@ -31,9 +31,9 @@ zle -N zle-keymap-select _set-block-cursor
 zle -N zle-line-finish _set-block-cursor
 
 #History
-HISTSIZE=5000
-HISTFILE=~/.zsh_history
-SAVEHIST=$HISTSIZE
+HISTSIZE=1000000
+SAVEHIST=1000000
+HISTFILE="$XDG_CACHE_HOME/zsh_history"
 HISTDUP=erase 
 setopt appendhistory 
 setopt sharehistory 

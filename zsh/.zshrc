@@ -2,6 +2,7 @@
 # source global shell alias & variables files
 [ -f "$XDG_CONFIG_HOME/shell/alias" ] && source "$XDG_CONFIG_HOME/shell/alias"
 [ -f "$XDG_CONFIG_HOME/shell/vars" ] && source "$XDG_CONFIG_HOME/shell/vars"
+[ -f "$XDG_CONFIG_HOME/shell/fn" ] && source "$XDG_CONFIG_HOME/shell/fn"
 
 
 # install plugin
@@ -22,11 +23,6 @@ autoload -Uz compinit && compinit -C
 bindkey -v
 
 # Always use block cursor
-function _set-block-cursor {
-  echo -ne '\e[2 q'
-  zle reset-prompt
-}
-
 zle -N zle-keymap-select _set-block-cursor
 zle -N zle-line-finish _set-block-cursor
 
@@ -43,12 +39,13 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups 
 setopt hist_find_no_dups 
 
-# don't save the wrong command
-zshaddhistory() { 
-  whence ${${(z)1}[1]} >| /dev/null || return 1 
-}
-
 # keybinds 
 bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 bindkey '^F' autosuggest-accept
+
+# Auto-start or attach to 'startd' tmux session
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+  exec tmux new-session -A -s startd
+fi
+

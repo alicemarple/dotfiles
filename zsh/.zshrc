@@ -46,6 +46,6 @@ bindkey '^F' autosuggest-accept
 
 # Auto-start or attach to 'startd' tmux session
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-  exec tmux new-session -A -s startd
+  tmux new-session -A -s startd
 fi
 

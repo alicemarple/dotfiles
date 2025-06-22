@@ -7,7 +7,6 @@ alias fn="fzf --preview 'bat --color=always --style=numbers --line-range=:100 {}
 
 # eza
 alias el="eza -la --icons"
-alias et="eza -aT --level=3 --icons"
 
 # lazygit
 alias gg="lazygit"

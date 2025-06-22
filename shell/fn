@@ -16,3 +16,9 @@ function _set-block-cursor {
 tk() {
   tmux kill-session -t "$1"
 }
+
+et() {
+  local level="${1:-2}"
+  eza -T --level="$level" --icons
+}
+

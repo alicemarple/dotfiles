@@ -38,7 +38,7 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move page in downward" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move page in upward" })
 
 -- Select Whole file
-vim.keymap.set("n", "<leader>ay", "gg<S-v>G", { desc = "Select whole file" })
+vim.keymap.set("n", "<leader>as", "gg<S-v>G", { desc = "Select whole file" })
 
 -- terminal
 vim.keymap.set("t", "jk", [[<C-\><C-n>]], { noremap = true, silent = true, desc = "Escape terminal insert mode" })

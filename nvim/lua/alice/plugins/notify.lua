@@ -1,4 +1,4 @@
-local state = {
+local notifystate = {
 	floating = {
 		buf = -1,
 		win = -1,
@@ -44,10 +44,10 @@ local function create_floating_window(opts)
 end
 
 local msg_toggle = function()
-	if not vim.api.nvim_win_is_valid(state.floating.win) then
-		state.floating = create_floating_window({ buf = state.floating.buf })
+	if not vim.api.nvim_win_is_valid(notifystate.floating.win) then
+		notifystate.floating = create_floating_window({ buf = notifystate.floating.buf })
 	else
-		vim.api.nvim_win_hide(state.floating.win)
+		vim.api.nvim_win_hide(notifystate.floating.win)
 	end
 end
 vim.api.nvim_create_user_command("MsgToggle", msg_toggle, {})

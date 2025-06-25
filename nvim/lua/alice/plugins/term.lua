@@ -1,4 +1,4 @@
-local state = {
+local termstate = {
 	floating = {
 		buf = -1,
 		win = -1,
@@ -18,7 +18,7 @@ local function create_floating_window(opts)
 		buf = opts.buf
 	else
 		buf = vim.api.nvim_create_buf(false, true)
-		vim.api.nvim_buf_set_option(buf, "filetype", "term")
+		vim.api.nvim_buf_set_option(buf, "filetype", "terminal")
 	end
 
 	local win_config = {
@@ -36,14 +36,20 @@ local function create_floating_window(opts)
 end
 
 local toggle_term = function()
-	if not vim.api.nvim_win_is_valid(state.floating.win) then
-		state.floating = create_floating_window({ buf = state.floating.buf })
-		if vim.bo[state.floating.buf].buftype ~= "terminal" then
-			vim.cmd.term()
+	if not vim.api.nvim_win_is_valid(termstate.floating.win) then
+		termstate.floating = create_floating_window({ buf = termstate.floating.buf })
+		if vim.bo[termstate.floating.buf].buftype ~= "terminal" then
+			vim.fn.termopen(vim.o.shell, {
+				on_exit = function()
+					if vim.api.nvim_buf_is_valid(termstate.floating.buf) then
+						vim.api.nvim_buf_delete(termstate.floating.buf, { force = true })
+					end
+				end,
+			})
 			vim.cmd("startinsert")
 		end
 	else
-		vim.api.nvim_win_hide(state.floating.win)
+		vim.api.nvim_win_hide(termstate.floating.win)
 	end
 end
 

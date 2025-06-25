@@ -39,7 +39,14 @@ local toggle_lazygit = function()
 	if not vim.api.nvim_win_is_valid(state.floating.win) then
 		state.floating = create_floating_window({ buf = state.floating.buf })
 		if vim.bo[state.floating.buf].buftype ~= "terminal" then
-			vim.fn.termopen("lazygit", { detach = false })
+			vim.fn.termopen("lazygit", {
+				detach = false,
+				on_exit = function()
+					if vim.api.nvim_buf_is_valid(state.floating.buf) then
+						vim.api.nvim_buf_delete(state.floating.buf, { force = true })
+					end
+				end,
+			})
 			vim.cmd("startinsert")
 		end
 	else

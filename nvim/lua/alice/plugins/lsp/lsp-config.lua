@@ -10,8 +10,8 @@ return {
 	lazy = false,
 	config = function()
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 		local lspconfig = require("lspconfig")
+
 		lspconfig.tailwindcss.setup({
 			capabilities = capabilities,
 		})
@@ -50,6 +50,11 @@ return {
 		lspconfig.gopls.setup({
 			capabilities = capabilities,
 		})
+		vim.diagnostic.config({
+			-- virtual_text = true, --show diagnostics
+			underline = false, --no underline for diagnostics
+		})
+
 		vim.keymap.set("n", "<leader>rs", ":LspRestart<CR>", { desc = "Restart lsp" })
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover documentation" })
 		vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Show signature help" })
@@ -65,7 +70,7 @@ return {
 		end, { desc = "Previous diagnostic" })
 
 		vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", { desc = "Goto Definition" })
-		vim.keymap.set("n", "gD", "<cmd>Telescope lsp_declarations<CR>", { desc = "Goto Declaration" })
+		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
 		vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", { desc = "References", nowait = true })
 		vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", { desc = "Goto Implementation" })
 		vim.keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", { desc = "Goto Type Definition" })

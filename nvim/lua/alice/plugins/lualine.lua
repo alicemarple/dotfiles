@@ -5,8 +5,8 @@ return {
 		require("lualine").setup({
 			options = {
 				theme = "catppuccin",
-				globalstatus = true, -- enable lualine golbally if want to disable for anything add in below line
-				disabled_filetypes = { "alpha", "TelescopePrompt", "snacks_input" },
+				globalstatus = true,
+				disabled_filetypes = { "alpha", "TelescopePrompt", "lazygit", "notify" },
 			},
 			sections = {
 				lualine_b = { "branch" },

@@ -7,8 +7,8 @@ local state = {
 
 local function create_floating_window(opts)
 	opts = opts or {}
-	local width = opts.width or math.floor(vim.o.columns * 0.85)
-	local height = opts.height or math.floor(vim.o.lines * 0.85)
+	local width = opts.width or math.floor(vim.o.columns * 0.9)
+	local height = opts.height or math.floor(vim.o.lines * 0.9)
 
 	local col = math.floor((vim.o.columns - width) / 2)
 	local row = math.floor((vim.o.lines - height) / 2)
@@ -18,16 +18,8 @@ local function create_floating_window(opts)
 		buf = opts.buf
 	else
 		buf = vim.api.nvim_create_buf(false, true)
-		vim.api.nvim_buf_set_option(buf, "filetype", "notify")
+		vim.api.nvim_buf_set_option(buf, "filetype", "lazygit")
 	end
-
-	local messages = vim.fn.execute("messages")
-	local lines = vim.split(messages, "\n")
-
-	vim.api.nvim_buf_set_option(buf, "modifiable", true)
-	vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
-	vim.api.nvim_buf_set_option(buf, "modifiable", false)
-	vim.api.nvim_buf_set_option(buf, "readonly", true)
 
 	local win_config = {
 		relative = "editor",
@@ -43,16 +35,21 @@ local function create_floating_window(opts)
 	return { buf = buf, win = win }
 end
 
-local msg_toggle = function()
+local toggle_lazygit = function()
 	if not vim.api.nvim_win_is_valid(state.floating.win) then
 		state.floating = create_floating_window({ buf = state.floating.buf })
+		if vim.bo[state.floating.buf].buftype ~= "terminal" then
+			vim.fn.termopen("lazygit", { detach = false })
+			vim.cmd("startinsert")
+		end
 	else
 		vim.api.nvim_win_hide(state.floating.win)
 	end
 end
-vim.api.nvim_create_user_command("MsgToggle", msg_toggle, {})
 
--- for notification history
-vim.keymap.set("n", "<leader>sn", "<cmd>MsgToggle<CR>", { desc = "search notifications" })
+vim.api.nvim_create_user_command("LazygitToggle", toggle_lazygit, {})
+
+-- for floating lazygit
+vim.keymap.set("n", "<leader>gg", "<cmd>LazygitToggle<CR>", { desc = "Lazygit" })
 
 return {}

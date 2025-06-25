@@ -12,11 +12,11 @@ return {
 				themable = true, -- allows highlight groups to be overriden i.e. sets highlights as default
 				numbers = "none", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
 				close_command = function(n)
-					Snacks.bufdelete(n)
-				end, -- can be a string | function, see "Mouse actions"
-				right_mouse_command = function(n)
-					Snacks.bufdelete(n)
-				end, -- can be a string | function, see "Mouse actions"
+					vim.cmd("bdelete! " .. n) -- or `bdelete` if you don’t want the `!`
+				end,
+				-- right_mouse_command = function(n)
+				-- 	Snacks.bufdelete(n)
+				-- end, -- can be a string | function, see "Mouse actions"
 				-- left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
 				-- middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
 				buffer_close_icon = "✗",
@@ -56,8 +56,8 @@ return {
 				sort_by = "insert_at_end",
 				offsets = {
 					{
-						filetype = "NvimTree",
-						text = "nvim-tree",
+						filetype = "neo-tree",
+						text = "neo-tree",
 						highlight = "Directory",
 						text_align = "left",
 					},

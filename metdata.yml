@@ -43,7 +43,7 @@
   confdir: ~/.config/lazygit
 
 - name: nvim
-  version: v0.2.0
+  version: v0.3.0
   confdir: ~/.config/nvim
 
 - name: rofi

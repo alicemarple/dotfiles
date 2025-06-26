@@ -51,7 +51,7 @@ return {
 			capabilities = capabilities,
 		})
 		vim.diagnostic.config({
-			-- virtual_text = true, --show diagnostics
+			virtual_text = true, --show diagnostics
 			underline = false, --no underline for diagnostics
 		})
 

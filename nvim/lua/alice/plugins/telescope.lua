@@ -30,7 +30,6 @@ return {
 
 		telescope.load_extension("fzf")
 		telescope.load_extension("ui-select")
-		-- telescope.load_extension("notify")
 
 		-- set keymaps
 		local keymap = vim.keymap
@@ -51,7 +50,6 @@ return {
 		keymap.set("n", "<leader>sh", "<cmd>Telescope help_tags<CR>", { desc = "Help Pages" })
 		keymap.set("n", "<leader>s/", "<cmd>Telescope search_history<CR>", { desc = "Search History" })
 		keymap.set("n", "<leader>s:", "<cmd>Telescope command_history<CR>", { desc = "Command History" }) -- command history
-		-- keymap.set("n", "<leader>sn", "<cmd>Telescope notify<CR>", { desc = "Notification History" }) -- notification history
 
 		-- git
 		keymap.set("n", "<leader>fg", "<cmd>Telescope git_files<CR>", { desc = "Find Git Files" })

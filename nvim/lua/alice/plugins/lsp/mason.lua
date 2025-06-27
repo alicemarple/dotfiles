@@ -49,7 +49,6 @@ return {
 				"beautysh",
 				"gofumpt", -- go
 				"goimports",
-				"revive",
 			},
 		})
 	end,

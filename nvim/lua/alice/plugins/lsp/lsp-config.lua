@@ -9,20 +9,60 @@ return {
 	},
 	lazy = false,
 	config = function()
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		local lspconfig = require("lspconfig")
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-		lspconfig.tailwindcss.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.html.setup({
-			capabilities = capabilities,
-		})
+		local on_attach = function(_, bufnr)
+			local function map(desc, keys, func)
+				vim.keymap.set("n", keys, func, { buffer = bufnr, silent = true, desc = desc })
+			end
+
+			map("Restart LSP", "<leader>rs", ":LspRestart<CR>")
+			map("Hover Docs", "K", vim.lsp.buf.hover)
+			map("Signature Help", "<C-k>", vim.lsp.buf.signature_help)
+			map("Rename Symbol", "<leader>rn", vim.lsp.buf.rename)
+			map("Code Actions", "<leader>ca", vim.lsp.buf.code_action)
+			map("Line Diagnostics", "<leader>de", vim.diagnostic.open_float)
+			map("Diagnostic List", "<leader>dq", vim.diagnostic.setloclist)
+			map("Next Diagnostic", "]d", function()
+				vim.diagnostic.jump({ count = 1, float = true })
+			end)
+			map("Previous Diagnostic", "[d", function()
+				vim.diagnostic.jump({ count = -1, float = true })
+			end)
+			map("Goto Definition", "gd", "<cmd>Telescope lsp_definitions<CR>")
+			map("Goto Declaration", "gD", vim.lsp.buf.declaration)
+			map("References", "gr", "<cmd>Telescope lsp_references<CR>")
+			map("Goto Implementation", "gi", "<cmd>Telescope lsp_implementations<CR>")
+			map("Goto Type Definition", "gt", "<cmd>Telescope lsp_type_definitions<CR>")
+			map("Document Symbols", "gs", "<cmd>Telescope lsp_document_symbols<CR>")
+			map("Workspace Symbols", "gS", "<cmd>Telescope lsp_workspace_symbols<CR>")
+		end
+
+		-- lsp
+		local servers = {
+			"tailwindcss",
+			"html",
+			"bashls",
+			"cssls",
+			"pylsp",
+			"ts_ls",
+			"clangd",
+			"gopls",
+		}
+
+		for _, server in ipairs(servers) do
+			lspconfig[server].setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+		end
+
 		lspconfig.lua_ls.setup({
 			capabilities = capabilities,
+			on_attach = on_attach,
 			settings = {
 				Lua = {
-					-- make the language server recognize "vim" global
 					diagnostics = {
 						globals = { "vim" },
 					},
@@ -32,49 +72,10 @@ return {
 				},
 			},
 		})
-		lspconfig.bashls.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.cssls.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.pylsp.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.ts_ls.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.clangd.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.gopls.setup({
-			capabilities = capabilities,
-		})
+
 		vim.diagnostic.config({
-			virtual_text = true, --show diagnostics
-			underline = false, --no underline for diagnostics
+			virtual_text = true,
+			underline = false,
 		})
-
-		vim.keymap.set("n", "<leader>rs", ":LspRestart<CR>", { desc = "Restart lsp" })
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover documentation" })
-		vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Show signature help" })
-		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
-		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Show code actions" })
-		vim.keymap.set("n", "<leader>de", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
-		vim.keymap.set("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Open diagnostic list" })
-		vim.keymap.set("n", "]d", function()
-			vim.diagnostic.jump({ count = 1, float = true })
-		end, { desc = "Next diagnostic" })
-		vim.keymap.set("n", "[d", function()
-			vim.diagnostic.jump({ count = -1, float = true })
-		end, { desc = "Previous diagnostic" })
-
-		vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", { desc = "Goto Definition" })
-		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
-		vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", { desc = "References", nowait = true })
-		vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", { desc = "Goto Implementation" })
-		vim.keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", { desc = "Goto Type Definition" })
-		vim.keymap.set("n", "gs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "LSP Symbols" })
-		vim.keymap.set("n", "gS", "<cmd>Telescope lsp_workspace_symbols<CR>", { desc = "LSP Workspace Symbols" })
 	end,
 }

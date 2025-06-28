@@ -7,48 +7,30 @@ return {
 
 		-- Set header
 		dashboard.section.header.val = {
-			[[                                                                       ]],
-			[[                                                                       ]],
-			[[                                                                       ]],
-			[[                                                                       ]],
-			[[                                                                     ]],
-			[[       ████ ██████           █████      ██                     ]],
-			[[      ███████████             █████                             ]],
-			[[      █████████ ███████████████████ ███   ███████████   ]],
-			[[     █████████  ███    █████████████ █████ ██████████████   ]],
-			[[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
-			[[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
-			[[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
-			[[                                                                       ]],
-			[[                                                                       ]],
-			[[                                                                       ]],
+
+			[[                                                     ]],
+			[[  ^  ^  ^   ^☆ ★ ☆ ___I_☆ ★ ☆ ^  ^   ^  ^  ^   ^  ^  ]],
+			[[ /|\/|\/|\ /|\ ★☆ /\-_--\ ☆ ★/|\/|\ /|\/|\/|\ /|\/|\ ]],
+			[[ /|\/|\/|\ /|\ ★ /  \_-__\☆ ★/|\/|\ /|\/|\/|\ /|\/|\ ]],
+			[[ /|\/|\/|\ /|\ 󰻀 |[]| [] | 󰻀 /|\/|\ /|\/|\/|\ /|\/|\ ]],
+			[[                                                     ]],
 		}
 
 		-- Set menu
 		dashboard.section.buttons.val = {
 			dashboard.button("e", "  New File", "<cmd>ene<CR>"),
-			dashboard.button("SPC ee", "  Toggle file explorer", "<CMD>:lua Snacks.explorer()<CR>"),
-			dashboard.button("SPC ff", "  Find File", ":Telescope find_files<CR>"),
-			dashboard.button("SPC sg", "  Find Word", ":Telescope live_grep<CR>"),
-			dashboard.button("m", "  Mappings", ":e ~/.config/nvim/lua/alice/core/keymaps.lua<CR>"),
+			dashboard.button("e", "  Toggle file explorer", "<CMD>:lua Snacks.explorer()<CR>"),
+			dashboard.button("f", "  Find File", ":Telescope find_files<CR>"),
+			dashboard.button("g", "  Find Word", ":Telescope live_grep<CR>"),
+			dashboard.button("m", "  Keymaps", ":e ~/.config/nvim/lua/alice/core/keymaps.lua<CR>"),
 			dashboard.button("c", "  Config", ":e ~/.config/nvim/<CR>"),
 			dashboard.button("l", "󰒲  Lazy", ":Lazy <CR>"),
 			dashboard.button("q", "  Quit NVIM", "<cmd>qa<CR>"),
 		}
-
 		-- Send config to alpha
+		dashboard.section.buttons.opts.hl = "Keyword"
+		dashboard.opts.opts.noautocmd = true
 		alpha.setup(dashboard.opts)
-
-		-- local function plugins_count()
-		-- 	local lazy_stats = require("lazy").stats()
-		-- 	local total = lazy_stats.count -- Total installed plugins
-		-- 	local loaded = lazy_stats.loaded -- Plugins currently loaded
-		-- 	return string.format(" %d/%d plugins loaded", loaded, total)
-		-- end
-
-		-- Set footer with plugin count
-		-- dashboard.section.footer.val = plugins_count()
-
 		-- Disable folding on alpha buffer
 		vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
 	end,

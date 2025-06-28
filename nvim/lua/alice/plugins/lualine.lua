@@ -6,7 +6,7 @@ return {
 			options = {
 				theme = "catppuccin",
 				globalstatus = true,
-				disabled_filetypes = { "alpha", "TelescopePrompt", "terminal", "lazygit", "notify" },
+				disabled_filetypes = { "alpha", "TelescopePrompt" },
 			},
 			sections = {
 				lualine_b = { "branch" },

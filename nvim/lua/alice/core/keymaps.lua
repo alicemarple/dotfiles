@@ -41,6 +41,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move page in upward" })
 vim.keymap.set("n", "<leader>as", "gg<S-v>G", { desc = "Select whole file" })
 
 -- Notifications
+-- NOTE: You tmux-yank plugin to copy from the messages
 vim.keymap.set("n", "<leader>sn", "<cmd>messages<CR>", { desc = "Notifications" })
 
 -- terminal

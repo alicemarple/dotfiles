@@ -1,3 +1,5 @@
+local fn = require("alice.core.fn")
+
 -- Keymaps
 
 -- Leader Key
@@ -11,17 +13,6 @@ vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
 vim.keymap.set("n", "<leader>nh", ":nohlsearch<CR>", { desc = "clear search highlight", silent = true })
 vim.keymap.set("i", "jk", "<ESC>", { desc = "exit the insert mode with jk" })
-
--- Window management
-vim.keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
-vim.keymap.set("n", "<leader>wh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
-vim.keymap.set("n", "<leader>we", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
-vim.keymap.set("n", "<leader>wx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
--- Movement in splits
-vim.keymap.set("n", "mh", "<C-w>h", { desc = "Move to right split" })
-vim.keymap.set("n", "ml", "<C-w>l", { desc = "Move to left split" })
-vim.keymap.set("n", "mj", "<C-w>j", { desc = "Move to bottom split" })
-vim.keymap.set("n", "mk", "<C-w>k", { desc = "Move to top split" })
 
 vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
 vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
@@ -40,9 +31,8 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move page in upward" })
 -- Select Whole file
 vim.keymap.set("n", "<leader>as", "gg<S-v>G", { desc = "Select whole file" })
 
--- Notifications
--- NOTE: You tmux-yank plugin to copy from the messages
-vim.keymap.set("n", "<leader>sn", "<cmd>messages<CR>", { desc = "Notifications" })
-
 -- terminal
 vim.keymap.set("t", "jk", [[<C-\><C-n>]], { noremap = true, silent = true, desc = "Escape terminal insert mode" })
+
+-- Notifications
+vim.keymap.set("n", "<leader>sn", fn.show_messages_split, { desc = "Notifications" })

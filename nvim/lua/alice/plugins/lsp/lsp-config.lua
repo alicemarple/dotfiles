@@ -32,7 +32,7 @@ return {
 			end)
 			map("Goto Definition", "gd", "<cmd>Telescope lsp_definitions<CR>")
 			map("Goto Declaration", "gD", vim.lsp.buf.declaration)
-			map("References", "gr", "<cmd>Telescope lsp_references<CR>")
+			map("References", "gR", "<cmd>Telescope lsp_references<CR>")
 			map("Goto Implementation", "gi", "<cmd>Telescope lsp_implementations<CR>")
 			map("Goto Type Definition", "gt", "<cmd>Telescope lsp_type_definitions<CR>")
 			map("Document Symbols", "gs", "<cmd>Telescope lsp_document_symbols<CR>")

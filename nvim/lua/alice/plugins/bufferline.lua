@@ -55,7 +55,7 @@ return {
 				maximum_length = 15,
 				sort_by = "insert_at_end",
 				-- offsets = {
-				-- 	{
+				-- {
 				-- 		filetype = "neo-tree",
 				-- 		text = "neo-tree",
 				-- 		highlight = "Directory",

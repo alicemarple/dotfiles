@@ -32,7 +32,6 @@ return {
 				"pylsp",
 				"ts_ls",
 				"bashls",
-				"grammarly",
 				"gopls",
 			},
 		})

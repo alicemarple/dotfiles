@@ -43,7 +43,7 @@
   confdir: ~/.config/lazygit
 
 - name: nvim
-  version: v0.3.0
+  version: v0.4.0
   confdir: ~/.config/nvim
 
 - name: rofi
@@ -63,7 +63,7 @@
   confdir: ~/.config/starship
 
 - name: tmux
-  version: v0.1.0
+  version: v0.1.1
   confdir: ~/.config/tmux
 
 - name: vim

@@ -1,0 +1,24 @@
+Step 1 :
+    git clone https://github.com/mino29/tokyo-night-grub.git
+
+Step 2 :
+    cd tokyo-night-grub
+
+Step 3 :
+    sudo cp -r tokyo-night /boot/grub/themes
+
+Step 4:
+    sudo vim /etc/default/grub
+    change #GRUB_THEME= to GRUB_THEME="/boot/grub/themes/tokyo-night/theme.txt"
+
+Step 5:
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+Step 6:
+    sudo vim /etc/default/grub
+    GRUB_GFXMODE=1920x1080( note: the resolution must be supported by grub for more use vbeinfo in grub mode )
+
+Step 7:
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+Theme is tokyo night

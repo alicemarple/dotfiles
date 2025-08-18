@@ -1,0 +1,5 @@
+# golang file path also golangci-lint path
+export PATH=$PATH:/usr/local/go/bin
+
+# open man-pages in nvim
+export MANPAGER='nvim +Man!'

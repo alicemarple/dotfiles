@@ -1,0 +1,24 @@
+# function
+
+
+# don't save the wrong command
+zshaddhistory() { 
+  whence ${${(z)1}[1]} >| /dev/null || return 1 
+}
+
+# Always use block cursor
+function _set-block-cursor {
+  echo -ne '\e[2 q'
+  zle reset-prompt
+}
+
+# kill tmux session
+tk() {
+  tmux kill-session -t "$1"
+}
+
+et() {
+  local level="${1:-2}"
+  eza -T --level="$level" --icons
+}
+

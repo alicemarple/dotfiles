@@ -1,0 +1,22 @@
+# Pacman
+alias ipi="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -r pacman -Qi"
+alias spi="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
+
+# fzf
+alias fn="fzf --preview 'bat --color=always --style=numbers --line-range=:100 {}' --multi | xargs -r nvim -p"
+
+# eza
+alias el="eza -la --icons"
+
+# lazygit
+alias gg="lazygit"
+
+# man
+alias fm="man -k . | fzf | awk '{print \$1}' | xargs -r man"
+
+# trash-cli
+alias ts="trash"
+alias ts-l="trash-list"
+alias ts-r="trash-restore"
+alias ts-rm="trash-rm"
+alias ts-e="trash-empty"

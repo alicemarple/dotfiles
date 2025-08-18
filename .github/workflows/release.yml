@@ -1,0 +1,55 @@
+name: Build & Release Tarball (Single Directory)
+
+on:
+  push:
+    tags:
+      - "*-*" # Matches tags like tmux-v0.2.0, nvim-v0.3.1, shell-v0.1.0
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 1️⃣ Checkout
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2️⃣ Extract Directory Name and Version from Tag
+      - name: Parse tag
+        id: parse
+        run: |
+          tag="${GITHUB_REF_NAME}"
+
+          # Split tag (e.g., nvim-v0.3.1) by first '-'
+          dir_name="${tag%%-*}"
+
+          # Everything after the first '-' is the version
+          version="${tag#*-}"
+
+          echo "dir_name=$dir_name" >> $GITHUB_OUTPUT
+          echo "version=$version" >> $GITHUB_OUTPUT
+
+      # 3️⃣ Create Tarball for the Specific Directory
+      - name: Create Tarball
+        run: |
+          dir_name="${{ steps.parse.outputs.dir_name }}"
+          version="${{ steps.parse.outputs.version }}"
+
+          if [ -d "$dir_name" ]; then
+            tar czf "${dir_name}-${version}.tar.gz" "$dir_name"
+            echo "Tarball Created: ${dir_name}-${version}.tar.gz"
+            mkdir artifacts
+            mv "${dir_name}-${version}.tar.gz" artifacts/
+          else
+            echo "Error: Directory $dir_name not found."
+            exit 1
+          fi
+
+      # 4️⃣ Create GitHub Release
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: artifacts/*.tar.gz

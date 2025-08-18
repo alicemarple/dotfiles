@@ -1,0 +1,14 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "Snacks"
+    ],
+    "diagnostics.disable": [
+        "missing-parameter",
+        "missing-fields",
+        "undefined-global",
+        "undefined-field",
+        "assign-type-mismatch",
+        "redefined-local"
+    ]
+}

@@ -1,0 +1,9 @@
+how to get charging and discharging notifications
+first I have the charging.sh script
+next step is edit udev "sudo vim /etc/udev/rules.d/battery-notify.rules" 
+create the file if not exists and the add below lines
+
+SUBSYSTEM=="power_supply",ATTR{status}=="Charging",ACTION=="change",RUN+="/usr/bin/su isadora -c '/home/isadora/.config/dunst/charging.sh'"
+SUBSYSTEM=="power_supply",ATTR{status}=="Discharging",ACTION=="change",RUN+="/usr/bin/su isadora -c '/home/isadora/.config/dunst/charging.sh'"
+
+At last run the "sudo udevadm control --reload"

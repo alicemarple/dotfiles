@@ -1,0 +1,83 @@
+- name: bat
+  version: v0.1.0
+  confdir: ~/.config/bat
+
+- name: browser
+  version: v0.1.0
+  confdir: ~/.config/firefox
+
+- name: btop
+  version: v0.1.0
+  confdir: ~/.config/btop
+
+- name: dunst
+  version: v0.1.0
+  confdir: ~/.config/dunst
+
+- name: eza
+  version: v0.1.0
+  confdir: ~/.config/eza
+
+- name: fastfetch
+  version: v0.1.0
+  confdir: ~/.config/fastfetch
+
+- name: hypr
+  version: v0.1.0
+  confdir: ~/.config/hypr
+
+- name: kitty
+  version: v0.1.0
+  confdir: ~/.config/kitty
+
+- name: lazygit
+  version: v0.1.0
+  confdir: ~/.config/lazygit
+
+- name: nvim
+  version: v0.1.0
+  confdir: ~/.config/nvim
+
+- name: rofi
+  version: v0.1.0
+  confdir: ~/.config/rofi
+
+- name: scripts
+  version: v0.1.0
+  confdir: ~/scripts
+
+- name: shell
+  version: v0.1.0
+  confdir: ~/.config/shell
+
+- name: starship
+  version: v0.1.0
+  confdir: ~/.config/starship
+
+- name: tmux
+  version: v0.1.0
+  confdir: ~/.config/tmux
+
+- name: vim
+  version: v0.1.0
+  confdir: ~/.
+
+- name: waybar
+  version: v0.1.0
+  confdir: ~/.config/waybar
+
+- name: wezterm
+  version: v0.1.0
+  confdir: ~/.config/wezterm
+
+- name: wlogout
+  version: v0.1.0
+  confdir: ~/.config/wlogout
+
+- name: yazi
+  version: v0.1.0
+  confdir: ~/.config/yazi
+
+- name: zsh
+  version: v0.1.0
+  confdir: ~/.config/zsh

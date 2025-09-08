@@ -40,6 +40,13 @@ Here is the list of tools I use :
 
 [@alice](https://www.github.com/alice46878)
 
+### Wallpapers
+
+https://res.cloudinary.com/dljmvvlte/image/upload/v1757314392/waifu12_b5ksov.jpg
+https://res.cloudinary.com/dljmvvlte/image/upload/v1757314399/street_tvhf1b.png
+https://res.cloudinary.com/dljmvvlte/image/upload/v1757314367/wall2_nbdvao.jpg
+https://res.cloudinary.com/dljmvvlte/image/upload/v1757314365/nord-street_yjd4hi.png
+
 ### Related :
 
 Here are more customization ideas

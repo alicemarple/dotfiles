@@ -11,7 +11,7 @@ vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
 vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
 vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
-vim.keymap.set("n", "<leader>nh", ":nohlsearch<CR>", { desc = "clear search highlight", silent = true })
+vim.keymap.set("n", "<leader>an", ":nohlsearch<CR>", { desc = "clear search highlight", silent = true })
 vim.keymap.set("i", "jk", "<ESC>", { desc = "exit the insert mode with jk" })
 
 vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab

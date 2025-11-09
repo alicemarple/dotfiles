@@ -14,11 +14,6 @@ return {
 				close_command = function(n)
 					vim.cmd("bdelete! " .. n) -- or `bdelete` if you don’t want the `!`
 				end,
-				-- right_mouse_command = function(n)
-				-- 	Snacks.bufdelete(n)
-				-- end, -- can be a string | function, see "Mouse actions"
-				-- left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
-				-- middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
 				buffer_close_icon = "✗",
 				close_icon = "",
 				path_components = 1, -- Show only the file name without the directory
@@ -54,14 +49,14 @@ return {
 				maximum_padding = 5,
 				maximum_length = 15,
 				sort_by = "insert_at_end",
-				-- offsets = {
-				-- {
-				-- 		filetype = "neo-tree",
-				-- 		text = "neo-tree",
-				-- 		highlight = "Directory",
-				-- 		text_align = "left",
-				-- 	},
-				-- },
+				offsets = {
+					{
+						filetype = "neo-tree",
+						text = "neo-tree",
+						highlight = "Directory",
+						text_align = "left",
+					},
+				},
 			},
 			highlights = {
 				separator = {

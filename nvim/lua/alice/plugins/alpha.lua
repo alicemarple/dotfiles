@@ -7,19 +7,27 @@ return {
 
 		-- Set header
 		dashboard.section.header.val = {
-
-			[[                                                     ]],
-			[[  ^  ^  ^   ^☆ ★ ☆ ___I_☆ ★ ☆ ^  ^   ^  ^  ^   ^  ^  ]],
-			[[ /|\/|\/|\ /|\ ★☆ /\-_--\ ☆ ★/|\/|\ /|\/|\/|\ /|\/|\ ]],
-			[[ /|\/|\/|\ /|\ ★ /  \_-__\☆ ★/|\/|\ /|\/|\/|\ /|\/|\ ]],
-			[[ /|\/|\/|\ /|\ 󰻀 |[]| [] | 󰻀 /|\/|\ /|\/|\/|\ /|\/|\ ]],
-			[[                                                     ]],
+			[[                                                                       ]],
+			[[                                                                       ]],
+			[[                                                                       ]],
+			[[                                                                       ]],
+			[[                                                                     ]],
+			[[       ████ ██████           █████      ██                     ]],
+			[[      ███████████             █████                             ]],
+			[[      █████████ ███████████████████ ███   ███████████   ]],
+			[[     █████████  ███    █████████████ █████ ██████████████   ]],
+			[[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
+			[[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
+			[[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
+			[[                                                                       ]],
+			[[                                                                       ]],
+			[[                                                                       ]],
 		}
 
 		-- Set menu
 		dashboard.section.buttons.val = {
-			dashboard.button("e", "  New File", "<cmd>ene<CR>"),
-			dashboard.button("e", "  Toggle file explorer", "<CMD>:lua Snacks.explorer()<CR>"),
+			dashboard.button("n", "  New File", "<cmd>ene<CR>"),
+			dashboard.button("e", "  Toggle file explorer", "<CMD>:Neotree toggle<CR>"),
 			dashboard.button("f", "  Find File", ":Telescope find_files<CR>"),
 			dashboard.button("g", "  Find Word", ":Telescope live_grep<CR>"),
 			dashboard.button("m", "  Keymaps", ":e ~/.config/nvim/lua/alice/core/keymaps.lua<CR>"),

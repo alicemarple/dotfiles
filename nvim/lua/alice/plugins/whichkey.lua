@@ -15,12 +15,13 @@ return {
 			{ "<leader>a", group = "Action" },
 			{ "<leader>t", group = "Tab" },
 			{ "<leader>s", group = "Search" },
-			{ "<leader>w", group = "Window" },
 			{ "<leader>b", group = "Buffer" },
 			{ "<leader>x", group = "Trouble" },
 			{ "<leader>e", group = "Explorer" },
 			{ "<leader>g", group = "Git" },
 			{ "<leader>T", group = "Test" },
+			{ "<leader>p", group = "Fugitive" },
+			{ "<leader>l", group = "Lsp" },
 		})
 	end,
 }

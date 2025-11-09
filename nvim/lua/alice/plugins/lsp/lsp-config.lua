@@ -7,83 +7,90 @@ return {
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim", opts = {} },
 	},
-	lazy = false,
+
 	config = function()
 		local lspconfig = require("lspconfig")
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		local mason_lspconfig = require("mason-lspconfig")
+		local cmp_nvim_lsp = require("cmp_nvim_lsp")
+		local capabilities = cmp_nvim_lsp.default_capabilities()
 
-		local on_attach = function(_, bufnr)
-			local function map(desc, keys, func)
-				vim.keymap.set("n", keys, func, { buffer = bufnr, silent = true, desc = desc })
-			end
+		vim.api.nvim_create_autocmd("LspAttach", {
+			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+			callback = function(ev)
+				local opts = { buffer = ev.buf, silent = true }
+				local keymap = vim.keymap
 
-			map("Restart LSP", "<leader>rs", ":LspRestart<CR>")
-			map("Hover Docs", "K", vim.lsp.buf.hover)
-			map("Signature Help", "<C-k>", vim.lsp.buf.signature_help)
-			map("Rename Symbol", "<leader>rn", vim.lsp.buf.rename)
-			map("Code Actions", "<leader>ca", vim.lsp.buf.code_action)
-			map("Line Diagnostics", "<leader>de", vim.diagnostic.open_float)
-			map("Diagnostic List", "<leader>dq", vim.diagnostic.setloclist)
-			map("Next Diagnostic", "]d", function()
-				vim.diagnostic.jump({ count = 1, float = true })
-			end)
-			map("Previous Diagnostic", "[d", function()
-				vim.diagnostic.jump({ count = -1, float = true })
-			end)
-			map("Goto Definition", "gd", "<cmd>Telescope lsp_definitions<CR>")
-			map("Goto Declaration", "gD", vim.lsp.buf.declaration)
-			map("References", "gR", "<cmd>Telescope lsp_references<CR>")
-			map("Goto Implementation", "gi", "<cmd>Telescope lsp_implementations<CR>")
-			map("Goto Type Definition", "gt", "<cmd>Telescope lsp_type_definitions<CR>")
-			map("Document Symbols", "gs", "<cmd>Telescope lsp_document_symbols<CR>")
-			map("Workspace Symbols", "gS", "<cmd>Telescope lsp_workspace_symbols<CR>")
-		end
+				opts.desc = "References"
+				keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
 
-		-- lsp
-		local servers = {
-			"tailwindcss",
-			"html",
-			"bashls",
-			"cssls",
-			"pylsp",
-			"ts_ls",
-			"clangd",
-			"gopls",
-		}
+				opts.desc = "Declaration"
+				keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
-		for _, server in ipairs(servers) do
-			lspconfig[server].setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-		end
+				opts.desc = "Definitions"
+				keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 
-		lspconfig.lua_ls.setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim" },
-					},
-					completion = {
-						callSnippet = "Replace",
-					},
-				},
+				opts.desc = "Implementations"
+				keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+
+				opts.desc = "Type definitions"
+				keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+
+				opts.desc = "Code action"
+				keymap.set({ "n", "v" }, "<leader>ac", vim.lsp.buf.code_action, opts)
+
+				opts.desc = "Rename"
+				keymap.set("n", "<leader>ln", vim.lsp.buf.rename, opts)
+
+				opts.desc = "Prev diagnostic"
+				keymap.set("n", "[d", function()
+					vim.diagnostic.jump({ count = -1, float = true })
+				end, opts)
+
+				opts.desc = "Next diagnostic"
+				keymap.set("n", "]d", function()
+					vim.diagnostic.jump({ count = 1, float = true })
+				end, opts)
+
+				opts.desc = "Hover docs"
+				keymap.set("n", "K", vim.lsp.buf.hover, opts)
+
+				opts.desc = "Restart LSP"
+				keymap.set("n", "<leader>lr", ":LspRestart<CR>", opts)
+			end,
+		})
+
+		mason_lspconfig.setup({
+			handlers = {
+
+				function(server_name)
+					lspconfig[server_name].setup({
+						capabilities = capabilities,
+					})
+				end,
+
+				["lua_ls"] = function()
+					lspconfig.lua_ls.setup({
+						capabilities = capabilities,
+						settings = {
+							Lua = {
+								diagnostics = { globals = { "vim" } },
+								completion = { callSnippet = "Replace" },
+							},
+						},
+					})
+				end,
 			},
 		})
 
 		local signs = {
 			[vim.diagnostic.severity.ERROR] = " ",
 			[vim.diagnostic.severity.WARN] = " ",
-			[vim.diagnostic.severity.HINT] = "󰠠 ",
+			[vim.diagnostic.severity.HINT] = " ",
 			[vim.diagnostic.severity.INFO] = " ",
 		}
 
 		vim.diagnostic.config({
-			signs = {
-				text = signs, -- Enable signs in the gutter
-			},
+			signs = { text = signs },
 			virtual_text = true,
 			underline = false,
 		})
